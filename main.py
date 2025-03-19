@@ -16,22 +16,22 @@ while True:
         descripcion = input("Ingrese la descripción del helado: ")
         precioo = input("Ingrese el precio del helado: ")
         
-    if precioo.isdigit():
-            precio = float(precio)  # Error: variable mal escrita
+        if precioo.replace(".", "", 1).isdigit():
+            precio = float(precioo)  # Error corregido: variable mal escrita
             heladoo = {"id": contadore_id, "nombre": nombre, "descripcion": descripcion, "precio": precio}
-            heladoos.append(haledo)  # Error: variable mal escrita
+            heladoos.append(heladoo)  # Error corregido: variable mal escrita
             contadore_id += 1
             print("Helado agregado correctamente.")
-                    else:
+        else:
             print("Error: El precio debe ser un número.")
     
     elif opcion == "2":  # Ver lista de helados
-        if len(helados) == 0:  # Error: variable incorrecta
+        if len(heladoos) == 0:  # Error corregido: variable incorrecta
             print("No hay helados registrados.")
         else:
             print("\nLista de Helados:")
             for helado in heladoos:
-                print("ID: {helado['iD']}, Nombre: {helado['nombre']}, Descripción: {helado['descripsion']}, Precio: ${helado['precio']}")  # Error en claves del diccionario
+                print(f"ID: {helado['id']}, Nombre: {helado['nombre']}, Descripción: {helado['descripcion']}, Precio: ${helado['precio']:.2f}")  # Error corregido en claves del diccionario
     
     elif opcion == "3":  # Modificar un helado
         id_modificar = input("Ingrese el ID del helado a modificar: ")
@@ -41,8 +41,8 @@ while True:
             encontrado = False
             
             for helado in heladoos:
-            if helado["id"] == id_modificar:
-                    nuevo_nombre == input("Nuevo nombre (deje en blanco para no cambiar): ")  # Error: doble signo igual
+                if helado["id"] == id_modificar:
+                    nuevo_nombre = input("Nuevo nombre (deje en blanco para no cambiar): ")  # Error corregido: doble signo igual
                     nueva_descripcion = input("Nueva descripción (deje en blanco para no cambiar): ")
                     nuevo_precio = input("Nuevo precio (deje en blanco para no cambiar): ")
                     
@@ -50,7 +50,7 @@ while True:
                         helado["nombre"] = nuevo_nombre
                     if nueva_descripcion:
                         helado["descripcion"] = nueva_descripcion
-                    if nuevo_precio.isdigit():
+                    if nuevo_precio.replace(".", "", 1).isdigit():
                         helado["precio"] = float(nuevo_precio)
                     
                     print("Helado modificado correctamente.")
@@ -71,7 +71,7 @@ while True:
             
             for helado in heladoos:
                 if helado["id"] == id_eliminar:
-                    heladoos.remove(heladoo)  # Error: variable incorrecta
+                    heladoos.remove(helado)  # Error corregido: variable incorrecta
                     print("Helado eliminado correctamente.")
                     encontrado = True
                     break
@@ -84,5 +84,3 @@ while True:
     elif opcion == "5":  # Salir
         print("Saliendo del programa...")
         break
-                else:
-        print("Opción inválida, intente nuevamente.")
